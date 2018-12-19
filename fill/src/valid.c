@@ -60,7 +60,7 @@ int main(void)
 	int		i;
 
 	i = 0;
-	tetrs = (char**)malloc(sizeof(char*) * 26 + 1);
+	tetrs = (char**)malloc(sizeof(char*) * (26 + 1));
 	while (i < 27)
 		tetrs[i++] = NULL;
 	if (ft_verif(tetrs) == 0)
