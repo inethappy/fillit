@@ -3,7 +3,7 @@
 
 typedef struct		s_tetr
 {
-	int			*x;		// array of x coordinates
+	int			*x;	// x[4]?	// array of x coordinates
 	int			*y;		// array of y coordinates
 	int			p_x;	// x position
 	int			p_y;	// y position

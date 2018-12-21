@@ -5,18 +5,6 @@
 
 int ft_tetr_verif(char *buf);
 
-/*
-{
-	if (ft_count_char(buf, '\n') != 4 || ft_count_char(buf, '#') != 4
-		|| ft_count_char(buf, '.') != 12)
-		return (0);
-	if (ft_str_len_n(buf, '\n') != 4 || ft_str_len_n(buf + 5, '\n') != 4
-		|| ft_str_len_n(buf + 10, '\n') != 4 || ft_str_len_n(buf + 15, '\n') != 4)
-		return (0);
-	//test on neibourse
- 	return (1);
-}
-*/
 int		ft_verif(char **tetrs)
 {
 	char	buf[21];
@@ -30,9 +18,6 @@ int		ft_verif(char **tetrs)
 	while ((ret = read(fd, buf, 20)) > 0 && ++i < 26)
 	{
 		buf[ret] = '\0';
-//		printf("ret = %d\n", ret);
-//		printf("ft_tetr_verif = %d\n", ft_tetr_verif(buf));
-//		printf("buf : \n%s\n", buf);
 		if (ret != 20 || ft_tetr_verif(buf) == 0 || ((tetrs[i] = ft_strdup(buf)) == NULL))
 			return (0);
 		if ((ret = read(fd, buf, 1)) == 0)
@@ -61,8 +46,8 @@ int main(void)
 
 	i = 0;
 	tetrs = (char**)malloc(sizeof(char*) * (26 + 1));
-	while (i < 27)
-		tetrs[i++] = NULL;
+	while (i < 27 && tetrs[i]) ////
+		tetrs[i++] = NULL; // ft_bzero ?
 	if (ft_verif(tetrs) == 0)
 	{
 		write(1, "error\n", 6);
@@ -70,6 +55,8 @@ int main(void)
 		system("leaks a.out");
 		return (0);
 	}
+	else /////
+		ft_tetr_make(tetrs, i); /////
 	i = -1;
 	while (tetrs[++i])
 	{
