@@ -55,8 +55,8 @@ int main(void)
 		system("leaks a.out");
 		return (0);
 	}
-	else //
-		ft_tetr_make(tetrs, i); //
+	else /////
+		ft_tetr_make(tetrs, i); /////
 	i = -1;
 	while (tetrs[++i])
 	{

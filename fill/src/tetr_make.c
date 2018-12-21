@@ -17,6 +17,7 @@ t_tetr	**ft_tetr_make(char **tetrs, int count)
 			return (NULL);
 		i++;
 	}
+	writing(tts); /////
 	return (tts);
 }
 
@@ -44,7 +45,7 @@ t_tetr	*ft_tetr_new(char *s, int count)
 			new->y[j] = i / 5;
 		}
 	}
-	move_tetr(new);
+	move_tetr(new); /////
 	return (new);
 }
 
