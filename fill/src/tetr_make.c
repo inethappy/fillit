@@ -17,7 +17,7 @@ t_tetr	**ft_tetr_make(char **tetrs, int count)
 			return (NULL);
 		i++;
 	}
-	writing(tts); /////
+	writing(tts, i); /////
 	return (tts);
 }
 

@@ -1,34 +1,34 @@
-void writing(t_tetr *tts)
+char **empty_map(int c)
 {
+	char **map;
 	int	i;
 	int j;
-	char letter = 'A';
-	char map[i][j];
-	int max;
-	int one_tetr = 0;
-	int f = 0;
+	int size;
 
-	max = 3; //kvadrat min pos4itat
+	size = c * 4;
 	i = 0;
-	j = 0;
-	while (f < 4)
-	{
-		while (i != tts->x[one_tetr][f])
-		{
-			while (j != tts->y[one_tetr][f])
-				{
-					map[i][j] = '.';
-					i++;
-				}
-			j++;
-		}
-		f++;
-	}
-
-	while (i !)
+	while ((i * i) < size)
+		i++;
+	if (!(map = (char**)malloc(sizeof(char*) * i)))
+		retrn (NULL);
+	map[i] = NULL;
+	j = -1;
+	while (map[++j])
+		map[j] = ft_strnew(i -1);
+	j = -1;
+	while (map[++j])
+		ft_memset(map[j], '.', i);
+	return (map);
+}
 
 
+void writing(t_tetr *tts, int c)
+{
+	char **map;
+	char letter;
 
+	map = empty_map(c);
+	letter = 'A';
 
 
 }
