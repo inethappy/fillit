@@ -1,3 +1,6 @@
+#include "libft.h"
+#include "fillit.h"
+
 char **empty_map(int c)
 {
 	char **map;
