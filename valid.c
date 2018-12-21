@@ -21,7 +21,6 @@ int ft_buf_verif(char *buf)
 		}
 		i++;
 	}
-//	printf("%d\n", fig);
 	if (fig == 6 || fig == 8)
 		return (1);
  	return (0);

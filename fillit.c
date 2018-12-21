@@ -22,7 +22,7 @@ int main(void)
 	i = 0;
 	bufs = (char**)malloc(sizeof(char*) * (26 + 1));
 	while (i < 27 && bufs[i]) ////
-		bufs[i++] = NULL; // ft_bzero ?
+		bufs[i++] = NULL;
 	if (ft_verif(bufs) == 0)
 	{
 		write(1, "error\n", 6);
@@ -42,8 +42,8 @@ int main(void)
 		return (0);
 
 
-	ft_free_bufs(bufs);
-	ft_free_tts(tts);
+	//ft_free_bufs(bufs);
+	//ft_free_tts(tts);
 //	system("leaks a.out");
 	return 0;
 }

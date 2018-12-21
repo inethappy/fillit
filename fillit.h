@@ -23,6 +23,8 @@ t_tetr				**ft_tetrs_make(char **bufs);
 t_tetr				*ft_tetr_new(char *s, int count);
 void				ft_tetr_move(t_tetr *new);
 void				ft_free_tts(t_tetr **tts);
+void				writing(t_tetr **tts, int c);
+char				**empty_map(int c);
 
 
 #endif

@@ -17,7 +17,7 @@ void ft_tetr_move(t_tetr *new)
 				min_y = (new->y[i] <= new->y[i - 1]) ? new->y[i] : new->y[i - 1];
 			}
 		min_x = (min_x <= new->x[j]) ? min_x : new->x[j];
-		min_y = (min_y <= new->x[j]) ? min_y : new->x[j];
+		min_y = (min_y <= new->y[j]) ? min_y : new->y[j];
 	}
 	i = -1;
 	while (++i < 4)
@@ -51,7 +51,7 @@ t_tetr	*ft_tetr_new(char *s, int count)
 			new->y[j] = i / 5;
 		}
 	}
-	ft_tetr_move(new); /////
+	ft_tetr_move(new);
 	return (new);
 }
 
@@ -73,7 +73,7 @@ t_tetr	**ft_tetrs_make(char **bufs)
 			return (NULL);
 		i++;
 	}
-//	writing(tts, i); /////
+	writing(tts, i); /////
 	return (tts);
 }
 
