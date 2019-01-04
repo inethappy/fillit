@@ -25,33 +25,38 @@ char **empty_map(int c)
 	j = -1;
 	printf("empty map:\n");
 	while (map[++j])
-		printf("%s\n", map[j]);//
+		printf("%s\n", map[j]);
+	printf("\n");
 	return (map);
 }
 
 
-void writing(t_tetr **tts, int c)
+void ft_put_figure(char **map, t_tetr **tts, int fig)
 {
-	char **map;
-	char letter;
-	int i;
-	int j = 0;
-	int tt = 0;
-	//some shit_code
-	map = empty_map(c);
-	letter = 'A';
-	i = 0;
-	while (map[i] != '\0')
+	int j = -1;
+
+	while (++j < 4)
+		map[tts[fig]->y[j] + tts[fig]->p_y][tts[fig]->x[j] + tts[fig]->p_x] = 65 + fig;
+	
+}
+
+int ft_func1(char **map, t_tetr **tts, int fig)
+{
+	int j;
+
+	if (ft_put_check(map, tts, fig))
 	{
-		if (tts[tt]->x[j] == i)
-			{
-				while (tts[tt]->x[j] == i)
-					{
-						map[i][j] = letter;
-						printf("%c\n", map[i][j]);
-						j++;
-					}
-			}
-		i++;
+		ft_put_figure(map, tts, fig);
+		ft_func1(map, tts, fig + 1);
 	}
+	else
+	{
+		ft_free_bufs(map);// may seqfault
+		map = empty_map(size + 1);
+		j = -1;
+		while (tts[++j])
+			ft_tetr_move(tts[j]);
+	}
+ 	//while (++j < 4)
+	//	map[tts[fig]->y[j]][tts[fig]->x[j]] = 65 + fig;
 }

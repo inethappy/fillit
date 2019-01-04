@@ -17,6 +17,7 @@ int main(void)
 	char	**bufs;
 	t_tetr	**tts;
 	int		i;
+	int		j;
 	int		tmp;
 
 	i = 0;
@@ -40,7 +41,19 @@ int main(void)
 	//ostalnoe:
 	if (!(tts =	ft_tetrs_make(bufs)))
 		return (0);
-
+	
+	
+	i = 0;
+	while (tts[i])
+		i++;
+	char **map;
+	map = empty_map(i);
+	
+	ft_put_figure(map, tts, 0);
+	
+	j = -1;
+	while (map[++j])
+		printf("%s\n", map[j]);
 
 	//ft_free_bufs(bufs);
 	//ft_free_tts(tts);

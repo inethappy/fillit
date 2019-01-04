@@ -35,10 +35,10 @@ t_tetr	*ft_tetr_new(char *s, int count)
 
 	if (!(new  = (t_tetr*)malloc(sizeof(t_tetr))))
 		return (NULL);
-	if (!(new->x  = (int*)malloc(sizeof(int) * 4)) ||
+/*	if (!(new->x  = (int*)malloc(sizeof(int) * 4)) ||
 				!(new->y  = (int*)malloc(sizeof(int) * 4)))
 		return (NULL);
-	new->p_x = 0;
+*/	new->p_x = 0;
 	new->p_y = 0;
 	new->c = count;
 	i = -1;
@@ -73,13 +73,17 @@ t_tetr	**ft_tetrs_make(char **bufs)
 			return (NULL);
 		i++;
 	}
-	writing(tts, i); /////
+	//writing(tts, i); /////
 	return (tts);
 }
 
 void	ft_free_tts(t_tetr **tts)
 {
-	// free all ints - DODELAT
+	/*int		i;
+
+	i = 0;
+	while (tts[i])
+		free(tts[i++]);*/
 	free (tts);
 }
 
