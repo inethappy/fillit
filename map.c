@@ -37,26 +37,51 @@ void ft_put_figure(char **map, t_tetr **tts, int fig)
 
 	while (++j < 4)
 		map[tts[fig]->y[j] + tts[fig]->p_y][tts[fig]->x[j] + tts[fig]->p_x] = 65 + fig;
-	
+
 }
 
 int ft_func1(char **map, t_tetr **tts, int fig)
 {
-	int j;
+	int		i;
+	int		size;
 
-	if (ft_put_check(map, tts, fig))
+	size = ft_strlen(map[0]);
+	i = 0;
+	while (i < size * size)
 	{
-		ft_put_figure(map, tts, fig);
-		ft_func1(map, tts, fig + 1);
+		if (ft_put_check(map, tts, fig, size))
+		{
+			ft_put_figure(map, tts, fig);
+			if (ft_func1(map, tts, fig + 1))
+				return (1);
+			ft_erase_figure(map, tts, fig);
+		}
+		i++;
+		tts[fig]->p_x = i % size;
+		tts[fig]->p_y = i / size;
 	}
-	else
-	{
-		ft_free_bufs(map);// may seqfault
-		map = empty_map(size + 1);
-		j = -1;
-		while (tts[++j])
-			ft_tetr_move(tts[j]);
-	}
+	ft_free_bufs(map);// may seqfault
+	map = empty_map(size + 1);
+	i = -1;
+	while (tts[++i])
+		ft_tetr_move(tts[i]);
+
  	//while (++j < 4)
 	//	map[tts[fig]->y[j]][tts[fig]->x[j]] = 65 + fig;
+}
+
+int		ft_put_check(char **map, t_tetr **tts, int fig, int size)
+{
+
+	int		i;
+
+	i = -1;
+	while (++i < 4)
+		if ((tts[fig]->p_y + tts[fig]->y[i] >= size) || (tts[fig]->p_x + tts[fig]->x[i] >= size))
+			return (0);
+	i = -1;
+	while (++i < 4)
+		if (map[tts[fig]->p_y + tts[fig]->y[i]][tts[fig]->p_x + tts[fig]->x[i]] != '.')
+			return(0);
+	return(1);
 }
