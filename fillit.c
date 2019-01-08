@@ -17,7 +17,6 @@ int main(void)
 	char	**bufs;
 	t_tetr	**tts;
 	int		i;
-	int		j;
 	int		tmp;
 
 	i = 0;
@@ -31,32 +30,31 @@ int main(void)
 //		system("leaks a.out");
 		return (0);
 	}
-//	else /////
-	 /////
+
+	 /////  pechat schitanih strok
 	tmp = -1;
 	while (bufs[++tmp])
 	{
 		printf("TETR %d:\n%s\n", tmp, bufs[tmp]);
 	}
-	//ostalnoe:
+	//sozdanie tetraminov iz strok:
 	if (!(tts =	ft_tetrs_make(bufs)))
 		return (0);
-	
-	
-	i = 0;
-	while (tts[i])
-		i++;
+
 	char **map;
-	map = empty_map(i);
-	
-	ft_put_figure(map, tts, 0);
-	
-	j = -1;
-	while (map[++j])
-		printf("%s\n", map[j]);
+	//char **map_tmp;
+	map = empty_map(ft_optimal_map_size(tts));
+
+	//map_tmp = empty_map(4);
+	//ft_paste_figure(map_tmp, tts, 0);
+	//printf("map_tmp:\n");
+	//ft_print_map(map_tmp);
+
+	map = ft_func1(map, tts, 0);
+	ft_print_map(map);
 
 	//ft_free_bufs(bufs);
 	//ft_free_tts(tts);
 //	system("leaks a.out");
-	return 0;
+	return (0);
 }

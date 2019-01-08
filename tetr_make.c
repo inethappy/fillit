@@ -63,7 +63,7 @@ t_tetr	**ft_tetrs_make(char **bufs)
 	i = 0;
 	while(bufs[i])
 		i++;
-	if (!(tts = (t_tetr**)malloc(sizeof(t_tetr*) * (i))))
+	if (!(tts = (t_tetr**)malloc(sizeof(t_tetr*) * (i + 1))))
 		return (NULL);
 	tts[i] = NULL;
 	i = 0;

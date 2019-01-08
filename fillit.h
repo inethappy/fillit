@@ -19,12 +19,19 @@ int					ft_buf_verif(char *buf);
 int					ft_verif(char **bufs);
 void				ft_free_bufs(char **bufs);
 
-t_tetr				**ft_tetrs_make(char **bufs);
-t_tetr				*ft_tetr_new(char *s, int count);
 void				ft_tetr_move(t_tetr *new);
+t_tetr				*ft_tetr_new(char *s, int count);
+t_tetr				**ft_tetrs_make(char **bufs);
 void				ft_free_tts(t_tetr **tts);
-void				ft_put_figure(char **map, t_tetr **tts, int fig);
-char				**empty_map(int c);
 
+int					ft_optimal_map_size(t_tetr **tts);
+char				**empty_map(int i);
+char				**ft_func1(char **map, t_tetr **tts, int fig);
+int					ft_func2(char **map, t_tetr **tts, int fig, int size);
+int					ft_put_check(char **map, t_tetr **tts, int fig, int size);
+
+void				ft_paste_figure(char **map, t_tetr **tts, int fig);
+void				ft_erase_figure(char **map, t_tetr **tts, int fig);
+void				ft_print_map(char **map);
 
 #endif
