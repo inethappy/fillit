@@ -46,16 +46,17 @@ char	**ft_func1(char **map, t_tetr **tts, int fig)
 //		printf("ft_func1 WHILE size = %d\n", size);
 		tmp = ft_func2(map, tts, fig, size);
 //		printf("			ft_func1 tmp = %d\n", tmp);
-//		ft_print_map(map);
+		ft_print_map(map);
 		if (tmp == 0)
 		{
 			ft_free_bufs(map);// may seqfault
 			size++;
 			map = empty_map(size);
 			i = 0;
-			while (tts[0] && (tts[i]->p_y = 0) && (tts[i]->p_x = 0))
+			while (tts[i] && (tts[i]->p_y = 0) && (tts[i]->p_x = 0)) /// 0 - i
 				i++;
 		}
+	//ft_print_map(map);	
 	}
 	//ft_print_map(map);
 	return (map);
@@ -72,6 +73,7 @@ int ft_func2(char **map, t_tetr **tts, int fig, int size)
 //		printf("ft_func2 WHILE\n");
 		tmp = ft_put_check(map, tts, fig, size);
 //		printf("ft_func2 while  tmp = %d, [%d, %d] \n", tmp, tts[fig]->p_x, tts[fig]->p_y);
+//		printf("ft_func2 while fig = %d, [%d, %d] \n", fig, tts[fig]->p_x, tts[fig]->p_y);
 		if (tmp)
 		{
 //			printf("ft_put_check is OK. i = %d, [%d, %d] \n", i, tts[fig]->p_x, tts[fig]->p_y);
@@ -131,6 +133,6 @@ void ft_print_map(char **map)
 	j = -1;
 	//printf("map:\n");
 	while (map[++j])
-		printf("%s\n", map[j]);
-	printf("\n");
+		write(1, map[j], ft_strlen(map[j]));
+	write (1, "\n", 1);
 }

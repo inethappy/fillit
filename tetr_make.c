@@ -73,7 +73,7 @@ t_tetr	**ft_tetrs_make(char **bufs)
 			return (NULL);
 		i++;
 	}
-	//writing(tts, i); /////
+	ft_free_bufs(bufs);
 	return (tts);
 }
 
