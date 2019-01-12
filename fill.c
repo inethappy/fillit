@@ -34,6 +34,6 @@ int main(int argc, char **argv)
 
 	//ft_free_tts(tts);
 
-	system("leaks fillit");
+	//system("leaks fillit");
 	return (0);
 }
