@@ -46,7 +46,7 @@ char	**ft_func1(char **map, t_tetr **tts, int fig)
 //		printf("ft_func1 WHILE size = %d\n", size);
 		tmp = ft_func2(map, tts, fig, size);
 //		printf("			ft_func1 tmp = %d\n", tmp);
-		ft_print_map(map);
+//		ft_print_map(map);
 		if (tmp == 0)
 		{
 			ft_free_bufs(map);// may seqfault
@@ -133,6 +133,9 @@ void ft_print_map(char **map)
 	j = -1;
 	//printf("map:\n");
 	while (map[++j])
-		write(1, map[j], ft_strlen(map[j]));
-	write (1, "\n", 1);
+	{
+		ft_putstr(map[j]);
+		ft_putstr("\n");
+	}
+	//ft_putstr("\n");
 }

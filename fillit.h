@@ -16,7 +16,8 @@ typedef struct		s_tetr
 }					t_tetr;
 
 int					ft_buf_verif(char *buf);
-int					ft_verif(char **bufs);
+int					ft_file_work(char *file_name, char **bufs);
+int					ft_verif(int fd, char **bufs);
 void				ft_free_bufs(char **bufs);
 
 void				ft_tetr_move(t_tetr *new);

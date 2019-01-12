@@ -26,16 +26,30 @@ int ft_buf_verif(char *buf)
  	return (0);
 }
 
-int		ft_verif(char **bufs)
+int		ft_file_work(char *file_name, char **bufs)
+{
+	int fd;
+
+	fd = open(file_name, O_RDONLY);
+	if ((fd < 3) || (ft_verif(fd, bufs) == 0))
+	{
+		write(1, "error\n", 6);
+		ft_free_bufs(bufs);
+		if (fd > 2)
+			close(fd);
+		return (0);
+	}
+	close(fd);
+	return (1);
+}
+
+int		ft_verif(int fd, char **bufs)
 {
 	char	buf[21];
 	int		ret;
-	int		fd;
 	int		i;
 
 	i = -1;
-	if ((fd = open("test1.txt", O_RDONLY)) < 3)
-		return 0;
 	while ((ret = read(fd, buf, 20)) > 0 && ++i < 26)
 	{
 		buf[ret] = '\0';
