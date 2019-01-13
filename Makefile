@@ -12,8 +12,20 @@ INC_FLAGC = -L $(INC_DIR) -lft
 
 all: $(NAME) 
 
-$(NAME):
-	$(CC) $(FLAGS) $(SOURCES) -I $(INCLUDES) $(INC_FLAGC) -o fillit
+$(NAME): $(INC) $(OBJECTS)
+	$(CC) $(FLAGS) $(OBJECTS) $(INC_FLAGC) -o $(NAME)
+$(INC):
+	make -C $(INC_DIR)
+
+
+HEADER_FLAGS =		-I $(INCLUDES)  -I fillit.h
+$(OBJECTS): | $(OBJ_DIR)
+
+$(OBJ_DIR):
+	mkdir $(OBJ_DIR)
+
+$(OBJ_DIR)%.o: %.c
+		$(CC) -c $< -o $@ $(CC_FLAGS) $(HEADER_FLAGS)
 
 clean:
 	rm -f $(OBJECTS)
@@ -21,5 +33,6 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	make fclean -C $(INC_DIR)
 
 re:	fclean all

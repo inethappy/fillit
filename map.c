@@ -67,7 +67,7 @@ int ft_func2(char **map, t_tetr **tts, int fig, int size)
 	int		i;
 	int		tmp;
 
-	i = 0;
+	i = -1;
 	while (i < size * size)
 	{
 //		printf("ft_func2 WHILE\n");

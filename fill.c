@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-	char	**bufs;
+	char	**bufs = NULL;
 	t_tetr	**tts;
 	int		i;
 	//int		fd;

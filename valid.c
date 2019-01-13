@@ -31,7 +31,7 @@ int		ft_file_work(char *file_name, char **bufs)
 	int fd;
 
 	fd = open(file_name, O_RDONLY);
-	if ((fd < 3) || (ft_verif(fd, bufs) == 0))
+	if ((fd < 0) || (ft_verif(fd, bufs) == 0))
 	{
 		write(1, "error\n", 6);
 		ft_free_bufs(bufs);
