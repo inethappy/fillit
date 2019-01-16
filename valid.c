@@ -6,11 +6,13 @@
 /*   By: mkotytsk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:24:38 by mkotytsk          #+#    #+#             */
-/*   Updated: 2019/01/16 15:50:03 by okuchko          ###   ########.fr       */
+/*   Updated: 2019/01/16 17:35:03 by mkotytsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/* reading from file, verifying tetraminos */
 
 int		ft_buf_verif(char *buf)
 {

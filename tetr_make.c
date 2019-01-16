@@ -6,11 +6,15 @@
 /*   By: okuchko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:51:41 by okuchko           #+#    #+#             */
-/*   Updated: 2019/01/16 15:52:25 by okuchko          ###   ########.fr       */
+/*   Updated: 2019/01/16 17:42:29 by mkotytsk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/* convertion from an array of strings (read figures) 
+ * to a structure with coordinates 
+ * and moving them to the upper left corner */
 
 void	ft_tetr_move(t_tetr *new)
 {
