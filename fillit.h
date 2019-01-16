@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fillit.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okuchko <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/16 15:52:51 by okuchko           #+#    #+#             */
+/*   Updated: 2019/01/16 15:56:18 by okuchko          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FILLIT_H
 # define FILLIT_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include "libft.h"
+# include <unistd.h>
+# include <fcntl.h>
+# include "libft.h"
 
 typedef struct		s_tetr
 {
-	int			x[4];	// array of x coordinates
-	int			y[4];	// array of y coordinates
-	int			p_x;	// x position
-	int			p_y;	// y position
-	int			c;		// char 0 - 25 ????
+	int			x[4];
+	int			y[4];
+	int			p_x;
+	int			p_y;
 }					t_tetr;
 
 int					ft_buf_verif(char *buf);
@@ -21,7 +31,7 @@ int					ft_verif(int fd, char **bufs);
 void				ft_free_bufs(char **bufs);
 
 void				ft_tetr_move(t_tetr *new);
-t_tetr				*ft_tetr_new(char *s, int count);
+t_tetr				*ft_tetr_new(char *s);
 t_tetr				**ft_tetrs_make(char **bufs);
 void				ft_free_tts(t_tetr **tts);
 

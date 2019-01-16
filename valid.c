@@ -6,7 +6,7 @@
 /*   By: mkotytsk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:24:38 by mkotytsk          #+#    #+#             */
-/*   Updated: 2019/01/14 16:24:41 by mkotytsk         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:50:03 by okuchko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,19 @@ int		ft_file_work(char *file_name, char **bufs)
 	int	i;
 
 	i = 0;
-	while (i < 27 && bufs[i])
+	while (i < 27)
 		bufs[i++] = NULL;
 	fd = open(file_name, O_RDONLY);
-	if ((fd < 0) || (ft_verif(fd, bufs) == 0))
+	if (fd < 0)
 	{
-		write(1, "error\n", 6);
+		ft_putstr("error\n");
+		return (0);
+	}
+	if (ft_verif(fd, bufs) == 0)
+	{
+		ft_putstr("error\n");
 		ft_free_bufs(bufs);
-		if (fd > 2)
-			close(fd);
+		close(fd);
 		return (0);
 	}
 	close(fd);
@@ -69,7 +73,7 @@ int		ft_verif(int fd, char **bufs)
 	int		i;
 
 	i = -1;
-	while ((ret = read(fd, buf, 20)) > 0 && ++i < 27)
+	while ((ret = read(fd, buf, 20)) > 0 && ++i < 26)
 	{
 		buf[ret] = '\0';
 		if (ret != 20 || ft_buf_verif(buf) == 0
@@ -84,12 +88,12 @@ int		ft_verif(int fd, char **bufs)
 	return (0);
 }
 
-void	ft_free_tts(t_tetr **tts)
+void	ft_free_bufs(char **bufs)
 {
-	int		i;
+	int	i;
 
-	i = 0;
-	while (tts[i])
-		free(tts[i++]);
-	free(tts);
+	i = -1;
+	while (bufs[++i])
+		free(bufs[i]);
+	free(bufs);
 }

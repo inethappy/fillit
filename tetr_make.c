@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tetr_make.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: okuchko <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/16 15:51:41 by okuchko           #+#    #+#             */
+/*   Updated: 2019/01/16 15:52:25 by okuchko          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 void	ft_tetr_move(t_tetr *new)
@@ -27,7 +39,7 @@ void	ft_tetr_move(t_tetr *new)
 	}
 }
 
-t_tetr	*ft_tetr_new(char *s, int count)
+t_tetr	*ft_tetr_new(char *s)
 {
 	t_tetr	*new;
 	int		i;
@@ -37,7 +49,6 @@ t_tetr	*ft_tetr_new(char *s, int count)
 		return (NULL);
 	new->p_x = 0;
 	new->p_y = 0;
-	new->c = count;
 	i = -1;
 	j = -1;
 	while (s[++i] && i < 20)
@@ -60,30 +71,26 @@ t_tetr	**ft_tetrs_make(char **bufs)
 	i = 0;
 	while (bufs[i])
 		i++;
-	if (!(tts = (t_tetr**)malloc(sizeof(t_tetr*) * (i + 1))))//nado + 1?
+	if (!(tts = (t_tetr**)malloc(sizeof(t_tetr*) * (i + 1))))
 		return (NULL);
 	tts[i] = NULL;
 	i = 0;
 	while (bufs[i])
 	{
-		if (!(tts[i] = ft_tetr_new(bufs[i], i)))
+		if (!(tts[i] = ft_tetr_new(bufs[i])))
 			return (NULL);
 		i++;
 	}
-//	write(1, "1\n", 2);
 	ft_free_bufs(bufs);
 	return (tts);
 }
 
-void	ft_free_bufs(char **bufs)
+void	ft_free_tts(t_tetr **tts)
 {
-	int	i;
+	int		i;
 
-	i = -1;
-	while (bufs[++i])
-	{
-		if (bufs[i])
-			free(bufs[i]);
-	}
-	free(bufs);
+	i = 0;
+	while (tts[i])
+		free(tts[i++]);
+	free(tts);
 }
