@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-void ft_tetr_move(t_tetr *new)
+void	ft_tetr_move(t_tetr *new)
 {
 	int i;
 	int j;
@@ -12,10 +12,10 @@ void ft_tetr_move(t_tetr *new)
 	while (++j < 4)
 	{
 		while (++i < 4)
-			{
-				min_x = (new->x[i] <= new->x[i - 1]) ? new->x[i] : new->x[i - 1];
-				min_y = (new->y[i] <= new->y[i - 1]) ? new->y[i] : new->y[i - 1];
-			}
+		{
+			min_x = (new->x[i] <= new->x[i - 1]) ? new->x[i] : new->x[i - 1];
+			min_y = (new->y[i] <= new->y[i - 1]) ? new->y[i] : new->y[i - 1];
+		}
 		min_x = (min_x <= new->x[j]) ? min_x : new->x[j];
 		min_y = (min_y <= new->y[j]) ? min_y : new->y[j];
 	}
@@ -33,17 +33,14 @@ t_tetr	*ft_tetr_new(char *s, int count)
 	int		i;
 	int		j;
 
-	if (!(new  = (t_tetr*)malloc(sizeof(t_tetr))))
+	if (!(new = (t_tetr*)malloc(sizeof(t_tetr))))
 		return (NULL);
-/*	if (!(new->x  = (int*)malloc(sizeof(int) * 4)) ||
-				!(new->y  = (int*)malloc(sizeof(int) * 4)))
-		return (NULL);
-*/	new->p_x = 0;
+	new->p_x = 0;
 	new->p_y = 0;
 	new->c = count;
 	i = -1;
 	j = -1;
-	while (++i < 20)
+	while (s[++i] && i < 20)
 	{
 		if (s[i] == '#')
 		{
@@ -61,9 +58,9 @@ t_tetr	**ft_tetrs_make(char **bufs)
 	int		i;
 
 	i = 0;
-	while(bufs[i])
+	while (bufs[i])
 		i++;
-	if (!(tts = (t_tetr**)malloc(sizeof(t_tetr*) * (i + 1))))
+	if (!(tts = (t_tetr**)malloc(sizeof(t_tetr*) * (i + 1))))//nado + 1?
 		return (NULL);
 	tts[i] = NULL;
 	i = 0;
@@ -73,18 +70,20 @@ t_tetr	**ft_tetrs_make(char **bufs)
 			return (NULL);
 		i++;
 	}
+//	write(1, "1\n", 2);
 	ft_free_bufs(bufs);
 	return (tts);
 }
 
-void	ft_free_tts(t_tetr **tts)
+void	ft_free_bufs(char **bufs)
 {
-	/*int		i;
+	int	i;
 
-	i = 0;
-	while (tts[i])
-		free(tts[i++]);*/
-	free (tts);
+	i = -1;
+	while (bufs[++i])
+	{
+		if (bufs[i])
+			free(bufs[i]);
+	}
+	free(bufs);
 }
-
-

@@ -2,7 +2,7 @@ NAME = fillit
 
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
-SOURCES = fill.c tetr_make.c map.c valid.c
+SOURCES = fill.c tetr_make.c map.c valid.c backtracking.c
 OBJECTS = $(SOURCES:.c=.o)
 
 INC = $(INC_DIR)libft.a

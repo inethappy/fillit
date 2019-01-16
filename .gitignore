@@ -1,0 +1,4 @@
+valid*
+!valid.c
+cmake-build-debug
+CMakeLists.txt
