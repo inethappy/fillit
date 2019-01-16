@@ -6,7 +6,7 @@
 /*   By: okuchko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 15:29:43 by okuchko           #+#    #+#             */
-/*   Updated: 2019/01/16 15:46:53 by okuchko          ###   ########.fr       */
+/*   Updated: 2019/01/16 16:18:28 by okuchko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	**ft_func1(char **map, t_tetr **tts, int fig)
 {
 	int		size;
 	int		i;
-
 
 	size = ft_strlen(map[0]);
 	while (ft_func2(map, tts, fig, size) == 0)
